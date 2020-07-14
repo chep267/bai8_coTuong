@@ -139,18 +139,23 @@ class BanCo{
     public void in(){
         System.out.print("\n      1   2   3   4   5   6   7   8   9   ");
 
-        int n = 1;
+        int n = 1, m=1;
         for (int i=1; i<=90; i++){
             if(i%9==1){
-                System.out.print("\n-----------------------------------------\n");
+                System.out.print("\n---------------------------------------------\n");
                 if(n<10) System.out.print(n+".  |");
                 if(n==10) System.out.print(n+". |");
                 n++;
             }
-           // System.out.print(ds.get(i).x+","+ds.get(i).y+" | ");
             System.out.print(" "+ds.get(i).getKiHieu()+" |");
+            if(ds.get(i).y == 9){
+                if(m<10) System.out.print("  ."+m);
+                if(m==10) System.out.print(" ."+m);
+                m++;
+            }
+
         }
-        System.out.print("\n-----------------------------------------\n");
+        System.out.print("\n---------------------------------------------\n");
         System.out.print("      1   2   3   4   5   6   7   8   9   \n");
     }
 
