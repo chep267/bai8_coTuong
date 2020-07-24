@@ -1,6 +1,7 @@
-package viet_lai_cotuong;
+package dongcode.viet_lai_cotuong;
 
 class Ma extends QuanCo {
+
     int sl = 2;
     int kh = 6;
     int ms;

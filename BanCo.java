@@ -1,15 +1,17 @@
-package viet_lai_cotuong;
+package dongcode.viet_lai_cotuong;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 import static java.lang.Math.abs;
 
-class BanCo{
+class BanCo {
+
     ArrayList<QuanCo> ds = new ArrayList<QuanCo>();
     int vua =2;
-    void taoBanCo(){
+
+    void taoBanCo() {
+
         int[][] bc = new int[][]{   { 4, 6, 3, 2, 1, 2, 3, 6, 4  },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0  },
                 { 0, 5, 0, 0, 0, 0, 0, 5, 0  },
@@ -26,54 +28,54 @@ class BanCo{
         //Tao khung:
         int n=0; QuanCo q = new Trong();
         ds.add(q);
-        for(int i=0; i<10; i++){
-            for (int j=0; j<9; j++){
-                if(bc[i][j]==0){
+        for(int i=0; i<10; i++) {
+            for (int j=0; j<9; j++) {
+                if( bc[i][j] == 0 ) {
                     q = new Trong();
                     q.x = i+1; q.y = j+1;
                     q.setMauSac(0);
 
                 }
-                else if(bc[i][j]==1){
+                else if( bc[i][j] == 1 ) {
                     q = new King();
                     q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    if( i <= 4 ) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
-                else if(bc[i][j]==2){
+                else if(bc[i][j] == 2) {
                     q = new Si();
                     q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    if(i <= 4) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
-                else if(bc[i][j]==3){
+                else if(bc[i][j] == 3) {
                     q = new Tuong();
-                    q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    q.x = i + 1; q.y = j + 1;
+                    if(i <= 4) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
-                else if(bc[i][j]==4){
+                else if(bc[i][j] == 4) {
                     q = new Xe();
-                    q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    q.x = i + 1; q.y = j + 1;
+                    if(i <= 4) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
-                else if(bc[i][j]==5){
+                else if(bc[i][j] == 5) {
                     q = new Phao();
-                    q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    q.x = i + 1; q.y = j + 1;
+                    if(i <= 4) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
-                else if(bc[i][j]==6){
+                else if(bc[i][j] == 6) {
                     q = new Ma();
                     q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    if(i <= 4) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
-                else if(bc[i][j]==7){
+                else if(bc[i][j] == 7) {
                     q = new Tot();
                     q.x = i+1; q.y = j+1;
-                    if(i<=4) q.setMauSac(1);
+                    if(i <= 4) q.setMauSac(1);
                     else q.setMauSac(2);
                 }
                 ds.add(q);
@@ -87,14 +89,15 @@ class BanCo{
 
 
     //Co them dc quan co vao ban co khong:
-    boolean canAdd(QuanCo q){
+    boolean canAdd(QuanCo q) {
+
         int dem =0;
-        for(int i=0; i<90; i++){
-            if(q.getKiHieu()==ds.get(i).getKiHieu()){
+        for(int i=0; i<90; i++) {
+            if(q.getKiHieu() == ds.get(i).getKiHieu()) {
                 dem++;
             }
         }
-        switch (q.getKiHieu()){
+        switch (q.getKiHieu()) {
             case 1:
                 if(q.getSoluong() < 1) return true;
                 break;
@@ -121,47 +124,48 @@ class BanCo{
     }
 
     //Xoa quan co:
-    void delete(QuanCo q){
+    void delete(QuanCo q) {
         q.setMauSac(0);
         q.setKiHieu(0);
     }
 
     //Them quan co:
-    void add(QuanCo q){
-        for(int i=0; i<90; i++){
-            if(ds.get(i).getKiHieu()==0){
+    void add(QuanCo q) {
+        for(int i=0; i<90; i++) {
+            if(ds.get(i).getKiHieu() == 0) {
                 ds.add(i,q);
             }
         }
     }
 
     //Tao ban:
-    public void in(){
-        System.out.print("\n      1   2   3   4   5   6   7   8   9   ");
+    public void in() {
+        System.out.print("       1     2     3     4     5     6     7     8     9   ");
 
         int n = 1, m=1;
-        for (int i=1; i<=90; i++){
-            if(i%9==1){
-                System.out.print("\n---------------------------------------------\n");
-                if(n<10) System.out.print(n+".  |");
-                if(n==10) System.out.print(n+". |");
+        for (int i=1; i<=90; i++) {
+            if(i%9 == 1) {
+                System.out.print("\n-----------------------------------------------------------------\n");
+                if(n < 10) System.out.print(n + ".  |");
+                if(n == 10) System.out.print(n + ". |");
                 n++;
             }
-            System.out.print(" "+ds.get(i).getKiHieu()+" |");
+            System.out.print(" " + ds.get(i).getKiHieu() + "," + ds.get(i).getMauSac() + " |");
             if(ds.get(i).y == 9){
-                if(m<10) System.out.print("  ."+m);
-                if(m==10) System.out.print(" ."+m);
+                if(m < 10) System.out.print("  ."+m);
+                if(m == 10) System.out.print(" ."+m);
                 m++;
             }
 
         }
-        System.out.print("\n---------------------------------------------\n");
-        System.out.print("      1   2   3   4   5   6   7   8   9   \n");
+        System.out.print("\n-----------------------------------------------------------------\n");
+//        System.out.print("      1   2   3   4   5   6   7   8   9   \n");
+        System.out.println("       1     2     3     4     5     6     7     8     9   ");
     }
 
     //Tao quan trung gian:
-    QuanCo taoquan(int x2, int y2){
-        int n = (x2-1)*9+y2;
+    QuanCo taoquan(int x2, int y2) {
+        int n = (x2-1) * 9 + y2;
         QuanCo c = ds.get(n);
         return c;
     }
@@ -170,41 +174,41 @@ class BanCo{
     boolean canMoveTo(int x1, int y1, int x2, int y2) {
         QuanCo c1 = taoquan(x1,y1);
         QuanCo c2 = taoquan(x2,y2);
-        if(x1==x2 && y1==y2){
+        if( (x1 == x2) && (y1 == y2) ) {
             return false;
         }
-        else if (c1.getMauSac() == c2.getMauSac()){
+        if (c1.getMauSac() == c2.getMauSac()) {
             return false;
         }
         else {
             int n=0;
             //Vua di:
-            if (c1.getKiHieu()==1) {
+            if (c1.getKiHieu() == 1) {
                 c1.canMoveTo(x2,y2);
             }
             //Si di:
-            else if (c1.getKiHieu()==2){
+            else if (c1.getKiHieu() == 2) {
                 c1.canMoveTo(x2,y2);
             }
             //Tuong di:
-            else if (c1.getKiHieu()==3) {
+            else if (c1.getKiHieu() == 3) {
                 //Tuong Trang di:
-                if (c1.getMauSac()==1 && abs(x2-x1)==2 && abs(y2-y1)==2){
-                    if (x2>5){
+                if ( (c1.getMauSac() == 1) && (abs(x2-x1) == 2) && (abs(y2-y1) == 2) ) {
+                    if (x2 > 5) {
                         return false;
                     }
-                    n = ((x1+x2)/2-1)*9 + (y1+y2)/2;
-                    if (ds.get(n).getKiHieu()!=0) return false;
+                    n = ( (x1+x2) / 2 - 1 ) * 9 + (y1+y2) / 2;
+                    if (ds.get(n).getKiHieu() != 0) return false;
 
                     return true;
                 }
                 //Tuong den di:
-                if (c1.getMauSac()==2 && abs(x2-x1)==2 && abs(y2-y1)==2){
-                    if (x2<6){
+                if ( (c1.getMauSac() == 2) && (abs(x2-x1) == 2) && (abs(y2-y1) == 2) ) {
+                    if (x2 < 6) {
                         return false;
                     }
-                    n = ((x1+x2)/2-1)*9 + (y1+y2)/2;
-                    if (ds.get(n).getKiHieu()!=0) return false;
+                    n = ( (x1+x2) / 2 - 1 ) * 9 + (y1+y2) / 2;
+                    if (ds.get(n).getKiHieu() != 0) return false;
 
                     return true;
                 }
@@ -212,41 +216,41 @@ class BanCo{
             }
 
             //Xe di:
-            else if(c1.getKiHieu()==4){
+            else if( c1.getKiHieu() == 4) {
                 //di ngang:
-                if(x1==x2){
+                if(x1 == x2) {
                     //Sang trai:
-                    if(y1>y2){
+                    if(y1 > y2) {
                         for (int i = y1-1; i >y2; i--) {
                             n = (x1-1)*9 + i;
-                            if (ds.get(n).getKiHieu()!=0) return false;
+                            if (ds.get(n).getKiHieu() != 0) return false;
                         }
                         return true;
                     }
                     //Sang phai:
-                    if(y1<y2){
+                    if(y1 < y2) {
                         for (int i = y1+1; i <y2; i++) {
                             n = (x1-1)*9 + i;
-                            if (ds.get(n).getKiHieu()!=0) return false;
+                            if (ds.get(n).getKiHieu() != 0) return false;
                         }
                         return true;
                     }
                 }
                 //di doc:
-                if(y1==y2){
+                if(y1 == y2) {
                     //len:
-                    if(x1>x2){
+                    if(x1 > x2) {
                         for (int i = x1-1; i >x2; i--) {
                             n = (i-1)*9 + y1;
-                            if (ds.get(n).getKiHieu()!=0) return false;
+                            if (ds.get(n).getKiHieu() != 0) return false;
                         }
                         return true;
                     }
                     //xuong:
-                    if(x1<x2){
+                    if(x1 < x2) {
                         for (int i = x1+1; i<x2; i++) {
                             n = (i-1)*9 + y1;
-                            if (ds.get(n).getKiHieu()!=0) return false;
+                            if (ds.get(n).getKiHieu() != 0) return false;
                         }
                         return true;
                     }
@@ -255,105 +259,105 @@ class BanCo{
             }
 
             //Phao di:
-            else if(c1.getKiHieu()==5){
-                if (c2.getKiHieu()==0){
+            else if( c1.getKiHieu() == 5 ) {
+                if (c2.getKiHieu() == 0) {
                     //di ngang:
-                    if(x1==x2){
+                    if(x1 == x2) {
                         //Sang trai:
-                        if(y1>y2){
+                        if(y1 > y2) {
                             for (int i = y1-1; i >y2; i--) {
                                 n = (x1-1)*9 + i;
-                                if (ds.get(n).getKiHieu()!=0) return false;
+                                if (ds.get(n).getKiHieu() !=0 ) return false;
                             }
                             return true;
                         }
                         //Sang phai:
-                        if(y1<y2){
+                        if(y1 < y2) {
                             for (int i = y1+1; i <y2; i++) {
                                 n = (x1-1)*9 + i;
-                                if (ds.get(n).getKiHieu()!=0) return false;
+                                if (ds.get(n).getKiHieu() != 0) return false;
                             }
                             return true;
                         }
                     }
                     //di doc:
-                    if(y1==y2){
+                    if(y1 == y2) {
                         //xuong:
-                        if(x1>x2){
+                        if(x1 > x2) {
                             for (int i = x1-1; i >x2; i--) {
                                 n = (i-1)*9 + y1;
-                                if (ds.get(n).getKiHieu()!=0) return false;
+                                if (ds.get(n).getKiHieu() != 0) return false;
                             }
                             return true;
                         }
                         //len:
-                        if(x1<x2){
+                        if(x1 < x2) {
                             for (int i = x1+1; i<x2; i++) {
                                 n = (i-1)*9 + y1;
-                                if (ds.get(n).getKiHieu()!=0) return false;
+                                if (ds.get(n).getKiHieu() != 0) return false;
                             }
                             return true;
                         }
                     }
                     return false;
                 }
-                else if(c2.getKiHieu()!=0){
+                else if(c2.getKiHieu() != 0) {
                     int dem;
                     //di ngang:
-                    if(x1==x2){
-                        if (abs(y1-y2)==1){
+                    if(x1 == x2){
+                        if (abs(y1-y2) == 1) {
                             return false;
                         }
-                        if(y1>y2){
+                        if(y1 > y2) {
                             dem = 0;
                             for (int i = y1-1; i >y2; i--) {
                                 n = (x1-1)*9 + i;
-                                if (ds.get(n).getKiHieu()!=0){
+                                if (ds.get(n).getKiHieu() != 0) {
                                     dem++;
                                     if(dem>1) return false;
                                 }
                             }
                             if (dem==1) return true;
                         }
-                        if(y1<y2){
+                        if(y1 < y2) {
                             dem = 0;
                             for (int i = y1+1; i <y2; i++) {
                                 n = (x1-1)*9 + i;
-                                if (ds.get(n).getKiHieu()!=0){
+                                if (ds.get(n).getKiHieu() != 0) {
                                     dem++;
-                                    if(dem>1) return false;
+                                    if(dem > 1) return false;
                                 }
                             }
-                            if (dem==1) return true;
+                            if (dem == 1) return true;
                         }
                         return false;
                     }
                     //di doc:
-                    if(y2==y1){
-                        if (abs(x1-x2)==1){
+                    if(y2 == y1) {
+                        if (abs(x1-x2) == 1) {
                             return false;
                         }
-                        if(x1>x2){
+                        if(x1 > x2) {
                             dem = 0;
                             for (int i = x1-1; i >x2; i--) {
                                 n = (i-1)*9 + y1;
-                                if (ds.get(n).getKiHieu()!=0){
+                                if (ds.get(n).getKiHieu() != 0) {
                                     dem++;
-                                    if(dem>1) return false;
+                                    if(dem > 1) return false;
                                 }
                             }
-                            if (dem==1) return true;
+                            if (dem == 1) return true;
                         }
-                        if(x1<x2){
+                        if(x1 < x2) {
                             dem = 0;
                             for (int i = x1+1; i<x2; i++) {
                                 n = (i-1)*9 + y1;
-                                if (ds.get(n).getKiHieu()!=0){
+                                if (ds.get(n).getKiHieu() != 0){
                                     dem++;
-                                    if(dem>1) return false;
+                                    if(dem > 1) return false;
                                 }
                             }
-                            if (dem==1) return true;
+                            if (dem == 1) return true;
                         }
                         return false;
                     }
@@ -362,18 +366,18 @@ class BanCo{
             }
 
             //ma di:
-            else if(c2.getKiHieu()==6) {
+            else if(c2.getKiHieu() == 6) {
                 //di 1:
-                if (abs(x2 - x1) == 2 && abs(y2 - y1) == 1) {
+                if (abs(x2 - x1) == 2  &&  abs(y2 - y1) == 1) {
                     QuanCo c3 = taoquan((x1+x2)/2, y1);
-                    if (c3.getKiHieu()!=0){
+                    if (c3.getKiHieu() != 0) {
                         return false;
                     } else return true;
                 }
                 //di 2:
-                else if (abs(x2-x1)==1 && abs(y2-y1)==2){
+                else if (abs(x2-x1) == 1  &&  abs(y2-y1) == 2) {
                     QuanCo c3 = taoquan(x1, (y1+y2)/2);
-                    if (c3.getKiHieu()!=0){
+                    if (c3.getKiHieu() != 0){
                         return false;
                     } else return true;
                 }
@@ -381,7 +385,7 @@ class BanCo{
             }
 
             //Tot di:
-            else if (c1.getKiHieu()==7){
+            else if (c1.getKiHieu() == 7) {
                 c1.canMoveTo(x2,y2);
             }
             return false;
@@ -394,125 +398,133 @@ class BanCo{
         int m = (x2-1)*9+y2;
         QuanCo c1 = taoquan(x1,y1);
         QuanCo c2 = taoquan(x2,y2);
-        if(c2.getKiHieu() != 0){
-            switch (c2.getKiHieu()){
+        if(c2.getKiHieu() != 0) {
+            switch (c2.getKiHieu()) {
                 case 1:
-                    System.out.print("\nAn Vua! Ket thuc Game!");
-                    if (c2.getMauSac()==2){
-                        System.out.println("\nBen Trang Win!");
-                    }else System.out.println("\nBen Den Win!");
+                    System.out.println("An Vua! Ket thuc Game!");
+                    if (c2.getMauSac() == 2) {
+                        System.out.println("Ben Trang Win!");
+                    }else System.out.println("Ben Den Win!");
                     vua--;
                     break;
                 case 2:
-                    System.out.print("\nAn Si!");
+                    System.out.println("An Si!");
                     break;
                 case 3:
-                    System.out.print("\nAn Tuong!");
+                    System.out.println("An Tuong!");
                     break;
                 case 4:
-                    System.out.print("\nAn Xe!");
+                    System.out.println("An Xe!");
                     break;
                 case 5:
-                    System.out.print("\nAn Phao!");
+                    System.out.println("An Phao!");
                     break;
                 case 6:
-                    System.out.print("\nAn Ma!");
+                    System.out.println("An Ma!");
                     break;
                 case 7:
-                    System.out.print("\nAn Tot!");
+                    System.out.println("An Tot!");
                     break;
             }
         }
         ds.get(m).setMauSac(c1.getMauSac());
         ds.get(m).setKiHieu(c1.getKiHieu());
+        ds.get(m).setPoint(c1.getPoint());
         ds.get(n).setMauSac(0);
         ds.get(n).setKiHieu(0);
+        ds.get(n).setPoint(0);
 
     }
-    //check king co du 2 hay khong:
-    boolean checkKing(){
-        int dem=0;
-        for(int i=0; i<90; i++){
-            if(ds.get(i).getKiHieu()==1){
-                dem++;
-            }
-        }
-        if(dem <2){
-            return true;
-        }
-        return false;
+
+    //check king co nho hon 2 hay khong:
+    boolean checkKing() {
+//        int dem=0;
+//        for(int i=0; i<90; i++) {
+//            if(ds.get(i).getKiHieu()= = 1) {
+//                dem++;
+//            }
+//        }
+//        if(dem < 2) {
+//            return true;
+//        }
+//        return false;
+        if( vua < 2 ) return true;
+        else return false;
     }
 
     //May choi:
-    public void MayTrangdi(){
+    public void MayTrangdi() {
+
         Random a = new Random();
-        int x2, y2; int x3,y3;
-        boolean flag = false;
-        do {
-            int n;
-            do {
-                x2 = a.nextInt(11);
-                y2 = a.nextInt(10);
-                if(x2==0) x2 +=1;
-                if(y2==0) y2 +=1;
-                n = (x2-1)*9+y2;
-            } while (ds.get(n).getKiHieu() == 0 || ds.get(n).getMauSac() == 2);
 
+        int x1,y1, x2=0,y2=0; int n;
+        int max, diem;
+        do{
+            max = diem =-1;
             do {
-                x3 = a.nextInt(11);
-                y3 = a.nextInt(10);
-                if(x3==0) x3 +=1;
-                if(y3==0) y3 +=1;
-                n = (x3-1)*9+y3;
-            } while (ds.get(n).getMauSac() == 1);
+                x1 = a.nextInt(10)+1;
+                y1 = a.nextInt(9)+1;
+                n = (x1-1)*9+y1;
+            } while (ds.get(n).getKiHieu() == 0   ||   ds.get(n).getMauSac() == 2);
 
-            if (!canMoveTo(x2, y2, x3, y3)) {
-                flag = false;
-            } else {
-                moveTo(x2,y2, x3, y3);
-                flag = true;
+            for(int i=1; i<91; i++) {
+                if(canMoveTo( x1, y1, ds.get(i).x, ds.get(i).y )) {
+                    diem = ds.get(i).getPoint();
+                    if(diem > max) {
+                        max = diem;
+                        x2 = ds.get(i).x;
+                        y2= ds.get(i).y;
+                    }
+                }
             }
-        } while (flag == false);
-        System.out.println("\nMay trang di: "+ "("+x2+","+y2+")  den  "+ "("+x3+","+y3+")");
+        }while (diem == -1  ||  x2 == 0  ||  y2 == 0);
+
+        System.out.println("c2: " + x2 + "," + y2);
+        System.out.println("max: " + max);
+
+        moveTo(x1, y1, x2, y2);
+        System.out.println("May trang di: " + "(" + x1 + "," + y1 + ")  den  " + "(" + x2 + "," + y2 + ")");
         in();
-        System.out.println("\n----------------------------------------------------\n");
-        if (vua<2){
+        System.out.print("\n----------------------------------------------------\n");
+        if (vua < 2) {
             System.exit(0);
         }
     }
-    public void MayDendi(){
+
+    public void MayDendi() {
+
         Random a = new Random();
-        int x2, y2; int x3,y3;
-        boolean flag = false;
-        do {
-            int n;
-            do {
-                x2 = a.nextInt(11);
-                y2 = a.nextInt(10);
-                if(x2==0) x2 +=1;
-                if(y2==0) y2 +=1;
-                n = (x2-1)*9+y2;
-            } while (ds.get(n).getKiHieu() == 0 || ds.get(n).getMauSac() == 1);
 
+        int x1,y1,x2=0,y2=0; int n;
+        int max, diem;
+        do{
+            max = diem =-1;
             do {
-                x3 = a.nextInt(11);
-                y3 = a.nextInt(10);
-                if(x3==0) x3 +=1;
-                if(y3==0) y3 +=1;
-                n = (x3-1)*9+y3;
-            } while (ds.get(n).getMauSac() == 2);
+                x1 = a.nextInt(10)+1;
+                y1 = a.nextInt(9)+1;
+                n = (x1-1)*9+y1;
+            } while (ds.get(n).getKiHieu() == 0   ||   ds.get(n).getMauSac() == 1);
 
-            if (!canMoveTo(x2, y2, x3, y3)) {
-                flag = false;
-            } else {
-                moveTo(x2,y2, x3, y3);
-                flag = true;
+            for(int i=1; i<91; i++) {
+                if( canMoveTo(x1, y1, ds.get(i).x, ds.get(i).y) ) {
+                    diem = ds.get(i).getPoint();
+                    if(diem > max) {
+                        max = diem;
+                        x2 = ds.get(i).x;
+                        y2= ds.get(i).y;
+                    }
+                }
             }
-        } while (flag == false);
-        System.out.println("\nMay den di: "+ "("+x2+","+y2+")  den  "+ "("+x3+","+y3+")");
+        }while (diem == -1  ||  x2 == 0  || y2 == 0);
+
+        System.out.println("c2: "  + x2 + "," + y2);
+        System.out.println("max: " + max);
+
+        moveTo(x1, y1, x2, y2);
+        System.out.println("May den di: " + "(" + x1 + "," + y1 + ")  den  " + "(" + x2 + "," + y2 + ")");
         in();
-        System.out.println("\n----------------------------------------------------\n");
-        if (vua<2){
+        System.out.print("\n----------------------------------------------------\n");
+        if (vua < 2) {
             System.exit(0);
         }
     }

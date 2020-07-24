@@ -1,8 +1,8 @@
-package viet_lai_cotuong;
+package dongcode.viet_lai_cotuong;
 
 abstract class QuanCo {
+
     int x,y; //toa do
-    int point; //Diem so
 
     abstract boolean canMoveTo(int x2, int y2);
     abstract void moveTo(int x2 , int y2 );

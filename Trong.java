@@ -1,6 +1,7 @@
-package viet_lai_cotuong;
+package dongcode.viet_lai_cotuong;
 
 class Trong extends QuanCo {
+
     int sl;
     int kh = 0;
     int ms;

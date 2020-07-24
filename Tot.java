@@ -1,8 +1,9 @@
-package viet_lai_cotuong;
+package dongcode.viet_lai_cotuong;
 
 import static java.lang.Math.abs;
 
 class Tot extends QuanCo {
+
     int sl = 5;
     int kh = 7;
     int ms;
@@ -11,35 +12,35 @@ class Tot extends QuanCo {
     @Override
     boolean canMoveTo(int x2, int y2) {
         //Tot trang di:
-        if(getMauSac()==1)
+        if( getMauSac() == 1 )
         {
-            if (x<=5){
-                if (x2==x+1 && y2==y){
+            if ( x <= 5 ) {
+                if ( (x2 == x+1) && (y2 == y ) ){
                     return true;
                 }
             }
-            else if (x>5){
-                if (x2==x+1 && y2==y){
+            else if ( x > 5) {
+                if ( (x2 == x+1) && (y2 == y) ) {
                     return true;
                 }
-                if (x2==x && abs(y-y2)==1){
+                if ( (x2 == x) && (abs(y-y2) == 1) ) {
                     return true;
                 }
             }
         }
 
         //Tot den di:
-        if(getMauSac()==2) {
-            if (x>=6){
-                if (x2==x+1 && y2==y){
+        if( getMauSac() == 2 ) {
+            if ( x >= 6 ) {
+                if ( (x2 == x+1) && (y2 == y) ) {
                     return true;
                 }
             }
-            if (x<6){
-                if (x2==x-1 && y2==y){
+            if (x < 6) {
+                if ( (x2 == x-1) && (y2 == y) ) {
                     return true;
                 }
-                if (x2==x && abs(y-y2)==1){
+                if ( (x2 == x) && (abs(y-y2) == 1) ) {
                     return true;
                 }
             }

@@ -1,8 +1,7 @@
-package viet_lai_cotuong;
-
-import static java.lang.Math.abs;
+package dongcode.viet_lai_cotuong;
 
 class Tuong extends QuanCo {
+
     int sl = 2;
     int kh = 3;
     int ms;
@@ -10,18 +9,6 @@ class Tuong extends QuanCo {
 
     @Override
     boolean canMoveTo(int x2, int y2) {
-        //Tuong Trang di:
-        if (getMauSac()==1 && abs(x2-x)==2 && abs(y2-y)==2){
-            if (x2<=5){
-                return true;
-            }
-        }
-        //Tuong den di:
-        if (getMauSac()==2 && abs(x2-x)==2 && abs(y2-y)==2){
-            if (x2>=6){
-                return true;
-            }
-        }
         return false;
     }
     @Override
